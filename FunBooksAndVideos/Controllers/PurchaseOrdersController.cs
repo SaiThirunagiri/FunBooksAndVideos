@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FunBooksAndVideos.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class PurchaseOrdersController : Controller
