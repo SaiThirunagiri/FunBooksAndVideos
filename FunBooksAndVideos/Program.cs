@@ -32,13 +32,11 @@ builder.Services.AddSingleton<ICustomerService, CustomerService>()
    .AddSingleton<IShippingService, ShippingService>()
    .AddSingleton<IPurchaseOrderProcessorService, PurchaseOrderProcessorService>();
 
-
-
 builder.Services.AddSingleton<IList<IBusinessRules>>(sp => {
-    var dependentCustomer = sp.GetRequiredService<ICustomerService>();
+    var dependentCustomerService = sp.GetRequiredService<ICustomerService>();
     var dependentShippingService = sp.GetRequiredService<IShippingService>();
-    return new List<IBusinessRules>() { new MembershipRule(dependentCustomer), 
-        new ShippingRule(dependentCustomer,dependentShippingService) };
+    return new List<IBusinessRules>() { new MembershipRule(dependentCustomerService), 
+        new ShippingRule(dependentCustomerService,dependentShippingService) };
 });
 
 
