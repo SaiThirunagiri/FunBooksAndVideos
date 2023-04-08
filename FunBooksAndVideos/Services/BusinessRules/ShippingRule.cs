@@ -10,12 +10,12 @@ namespace FunBooksAndVideos.Services.BusinessRules
         public ShippingRule(ICustomerService customerService,
             IShippingService shippingService)
         {
-            _customerService = customerService;     
+            _customerService = customerService;
             _shippingService = shippingService;
         }
         public void ProcessRule(PurchaseOrder purchaseOrder)
         {
-           if( purchaseOrder.Products.Any(x => x.IsPhysicalCopyRequired))
+            if (purchaseOrder.Products.Any(x => x.IsPhysicalCopyRequired))
             {
                 _shippingService.ProcessShipping(_customerService.GetCustomer(purchaseOrder.CustomerId),
                     purchaseOrder.Products);

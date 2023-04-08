@@ -1,13 +1,9 @@
-﻿using FunBooksAndVideos.Entities;
+﻿using Castle.Core.Resource;
+using FunBooksAndVideos.Entities;
 using FunBooksAndVideos.Exceptions;
 using FunBooksAndVideos.Repositories;
 using FunBooksAndVideos.Services;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunBooksAndVideos.Tests.ServicesTests
 {
@@ -48,7 +44,7 @@ namespace FunBooksAndVideos.Tests.ServicesTests
 
             // Assert
             Assert.IsTrue(customer.IsActive);
-           
+
         }
 
         [Test]
@@ -91,6 +87,19 @@ namespace FunBooksAndVideos.Tests.ServicesTests
 
             // Assert
             _customerRepositoryMock.Verify(x => x.Save(customer), Times.Once);
+        }
+
+        [Test]
+        public void GetCustomer_Repository_Success()
+        {
+            // Arrange
+            _customerRepositoryMock.Setup(x => x.GetAll()).Returns<List<Customer>>(null);
+
+            // Act
+            _customerService.GetAllCustomer();
+
+            // Assert
+            _customerRepositoryMock.Verify(x => x.GetAll(), Times.Once);
         }
     }
 }

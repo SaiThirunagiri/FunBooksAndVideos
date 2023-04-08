@@ -29,7 +29,7 @@ namespace FunBooksAndVideos.Tests
             _rules = new List<IBusinessRules>() { new MembershipRule(_customerServiceMock.Object), new ShippingRule(_customerServiceMock.Object, _shippingServiceMock.Object) };
             _mockrules = new Mock<IBusinessRules>();
             _service = new PurchaseOrderProcessorService(_customerServiceMock.Object, _shippingServiceMock.Object);
-           
+
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace FunBooksAndVideos.Tests
         public void ProcessPurchaseOrderAsync_ExecutesAllBusinessRules()
         {
             // Arrange
-            var customer = new Customer() { Name = "First Cust", CustomerId = 1 ,IsActive = false, Address = "Address 1" };
+            var customer = new Customer() { Name = "First Cust", CustomerId = 1, IsActive = false, Address = "Address 1" };
             var products = new List<Product> { new Product() { IsPhysicalCopyRequired = true,
              Name = "My Fav Book" , Price = 10, ProductType = ProductType.Book},
              new Product() { IsPhysicalCopyRequired = true, Name = "Rangers", ProductType = ProductType.VideoClubMemberShip, Price = 30 }
@@ -52,14 +52,14 @@ namespace FunBooksAndVideos.Tests
                 CustomerId = customer.CustomerId,
                 OrderNumber = 123455,
                 Products = products
-            } ;
+            };
 
             // Act
             _service.ProcessPurchaseOrderAsync(purchaseOrder);
 
             // Assert
-             Assert.IsTrue(_rules.Count == 2 );
-           
+            Assert.IsTrue(_rules.Count == 2);
+
         }
     }
 

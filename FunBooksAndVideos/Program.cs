@@ -26,10 +26,10 @@ Log.Logger = new LoggerConfiguration()
       .CreateLogger();
 
 // Add services to the container.
-builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ICustomerService, CustomerService>()
    .AddScoped<IShippingService, ShippingService>()
-   .AddScoped<IPurchaseOrderProcessorService,PurchaseOrderProcessorService>();
+   .AddScoped<IPurchaseOrderProcessorService, PurchaseOrderProcessorService>();
 
 
 builder.Services.AddControllers();

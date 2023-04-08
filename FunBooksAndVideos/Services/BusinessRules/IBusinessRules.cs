@@ -4,6 +4,6 @@ namespace FunBooksAndVideos.Services.BusinessRules
 {
     public interface IBusinessRules
     {
-        void  ProcessRule(PurchaseOrder purchaseOrder);
+        void ProcessRule(PurchaseOrder purchaseOrder);
     }
 }

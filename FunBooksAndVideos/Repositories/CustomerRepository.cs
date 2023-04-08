@@ -4,7 +4,7 @@ namespace FunBooksAndVideos.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        public  List<Customer>? _customers;
+        public List<Customer>? _customers;
         public CustomerRepository()
         {
             _customers = new List<Customer> { new Customer() { CustomerId = 1, Address = "Address 1", IsActive = false, Name = "First Cust" },
@@ -16,21 +16,21 @@ namespace FunBooksAndVideos.Repositories
         }
         public void Save(Customer customer)
         {
-            if(customer != null)
+            if (customer != null)
             {
                 _customers?.Add(customer);
             }
-           
+
         }
 
         public List<Customer> GetAll()
         {
-             return _customers ?? new List<Customer>();
+            return _customers ?? new List<Customer>();
         }
 
         public Customer? Get(long customerId)
         {
-           return _customers?.Find(x =>  (x.CustomerId == customerId));
+            return _customers?.Find(x => (x.CustomerId == customerId));
         }
     }
 }

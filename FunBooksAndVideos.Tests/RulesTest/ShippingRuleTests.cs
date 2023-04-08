@@ -1,12 +1,7 @@
 ﻿using FunBooksAndVideos.Entities;
-using FunBooksAndVideos.Services.BusinessRules;
 using FunBooksAndVideos.Services;
+using FunBooksAndVideos.Services.BusinessRules;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FunBooksAndVideos.Tests.RulesTest
 {

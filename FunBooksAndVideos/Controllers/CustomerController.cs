@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FunBooksAndVideos.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CustomerController : Controller
@@ -39,8 +39,22 @@ namespace FunBooksAndVideos.Controllers
         {
             try
             {
-                _customerService.GetCustomer(customerId);
-                return Ok();
+                var customer = _customerService.GetCustomer(customerId);
+                return Ok(customer);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error Get Customer");
+                return StatusCode(500);
+            }
+        }
+        [HttpGet("GetAllCustomer")]
+        public async Task<IActionResult> GetAllCustomer()
+        {
+            try
+            {
+                var customer = _customerService.GetAllCustomer();
+                return Ok(customer);
             }
             catch (Exception ex)
             {

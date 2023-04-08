@@ -1,12 +1,9 @@
-﻿using NUnit.Framework;
-using Moq;
-using System.Collections.Generic;
-using FunBooksAndVideos.Entities;
+﻿using FunBooksAndVideos.Entities;
 using FunBooksAndVideos.Repositories;
 
 namespace FunBooksAndVideos.Tests
 {
- 
+
 
     [TestFixture]
     public class CustomerRepositoryTests

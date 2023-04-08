@@ -7,16 +7,22 @@ namespace FunBooksAndVideos.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-        public CustomerService(ICustomerRepository customerRepository) {
+        public CustomerService(ICustomerRepository customerRepository)
+        {
             _customerRepository = customerRepository;
         }
 
-        public void  Activate(long customerId)
+        public void Activate(long customerId)
         {
             var customer = GetCustomer(customerId);
             if (customer == null) throw new CustomerNotFoundException("Customer not found");
             customer.IsActive = true;
-           
+
+        }
+
+        public List<Customer> GetAllCustomer()
+        {
+            return _customerRepository.GetAll();
         }
 
         public Customer GetCustomer(long customerId)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FunBooksAndVideos.Entities
+﻿namespace FunBooksAndVideos.Entities
 {
     public class Product
     {
@@ -22,6 +16,6 @@ namespace FunBooksAndVideos.Entities
         Video,
         BookClubMembership,
         VideoClubMemberShip
-           
+
     }
 }
