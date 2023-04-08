@@ -7,23 +7,21 @@ namespace FunBooksAndVideos.Services
     {
         private readonly ICustomerService _customerService;
         private readonly IShippingService _shippingService;
-        private readonly List<IBusinessRules> _businessRules;
-        public PurchaseOrderProcessorService(ICustomerService customerService, IShippingService shippingService)
+        private readonly IList<IBusinessRules> _businessRules;
+        public PurchaseOrderProcessorService(ICustomerService customerService, 
+            IShippingService shippingService,
+            IList<IBusinessRules> businessRules)
         {
             _customerService = customerService;
             _shippingService = shippingService;
-
-            _businessRules = new List<IBusinessRules>
-            {
-                new MembershipRule(_customerService),
-                new ShippingRule(_customerService, _shippingService)
-            };
+            _businessRules = businessRules;
+           
         }
 
         public void ProcessPurchaseOrderAsync(PurchaseOrder purchaseOrder)
         {
             if (purchaseOrder == null) throw new ArgumentNullException(nameof(purchaseOrder));
-            _businessRules.ForEach(x => x.ProcessRule(purchaseOrder));
+            _businessRules.ToList<IBusinessRules>().ForEach(x => x.ProcessRule(purchaseOrder));
         }
 
     }

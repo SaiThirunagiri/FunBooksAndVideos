@@ -58,7 +58,7 @@ namespace FunBooksAndVideos.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error Get Customer");
+                _logger.LogError(ex, "Error GetAll Customer");
                 return StatusCode(500);
             }
         }
