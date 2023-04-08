@@ -28,7 +28,7 @@ namespace FunBooksAndVideos.Tests
             _customerProducts = new Mock<List<Product>>();
             _rules = new List<IBusinessRules>() { new MembershipRule(_customerServiceMock.Object), new ShippingRule(_customerServiceMock.Object, _shippingServiceMock.Object) };
             _mockrules = new Mock<IBusinessRules>();
-            _service = new PurchaseOrderProcessorService(_customerServiceMock.Object, _shippingServiceMock.Object, _rules);
+            _service = new PurchaseOrderProcessorService(_rules);
 
         }
 
