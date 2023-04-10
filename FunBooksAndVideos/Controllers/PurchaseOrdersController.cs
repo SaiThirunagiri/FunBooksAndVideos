@@ -23,6 +23,10 @@ namespace FunBooksAndVideos.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
                 _purchaseOrderProcessor.ProcessPurchaseOrderAsync(purchaseOrder);
                 return Ok();
             }
